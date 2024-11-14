@@ -1,4 +1,4 @@
-*Repositorio con alguno de los códigos que he ido programando.
+*REPOSITORIO CON ALGUNOS CÓDIGOS QUE HE IDO PROGRAMANDO
 
 (-)As-proyecto.Rmd -> Proyecto para la universidad de Coimbra. Donde se compara la media muestral respecto de la real, usando método de monte Carlo para un plano SSR.
 
