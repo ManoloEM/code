@@ -1,0 +1,376 @@
+---
+title: |
+  ![](Coimbra.png) \par
+  \Large Facultade de Ciências e Tecnologia \par
+  \vspace{3cm}
+  \Huge Trabalho de \par
+  \Huge \textbf{Amostragem e Sondagem} \par
+  \large Sara Aguado y Manuel Enciso \par
+  \vspace{3cm}
+
+date: "2023-2024"
+output:
+  pdf_document:
+    fig_width: 7
+    fig_height: 4
+    fig_caption: true
+    df_print: kable
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Estabelecemos uma semente para obter sempre os mesmos resultados
+set.seed(0.6571)
+
+# Pacotes necessários
+library(ggplot2)
+```
+
+# Introdução
+
+O objetivo neste trabalho é fazer uma comparação entre o estimador geral num domínio e o estimador no caso em que o tamaño do domínio $N_0$ é conhecido. Para fazer isso, pegaremos dados de uma população escolhida. Esses dados foram retirados da pagina web [***Kaggle***](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams).
+
+Escolheremos um domínio dessa população e calcularemos os estimadores correspondentes bem como o valor real do parâmetro pesquisado para comparar os valores obtidos. Também calcularemos as variâncias e faremos um estudo da eficiência dos estimadores
+
+# Conjunto de dados e amostra tirada
+
+```{r dados, include=TRUE}
+
+# Carregamos os dados para usar
+dados<-read.csv('StudentsPerformance.csv',header=TRUE,sep=',',dec='.')
+
+# Para exibir os primeiros 6 dados do arquivo
+head(dados)
+
+```
+
+Vamos visualizar as notas médias em matemática, leitura e escrutínio, distinguindo por gênero.
+
+```{r graficas}
+# Calculamos as médias das notas de cada gênero
+medias_notas <- aggregate(cbind(math.score, reading.score, writing.score) ~ gender, data = dados, FUN = mean)
+
+# Convertemos os dados para formato longo (dados organizados) para facilitar a visualização no ggplot2
+medias_notas_long <- tidyr::pivot_longer(medias_notas, cols = c(math.score, reading.score, writing.score), names_to = "Matéria", values_to = "Media")
+
+# Criamos o gráfico de barras
+ggplot(medias_notas_long, aes(x = Matéria, y = Media, fill = gender)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Médias de notas por gênero",
+       x = "Matéria",
+       y = "Notas médias") +
+  scale_fill_manual(values = c("female" = "orchid1", "male" = "turquoise3")) +
+  theme_minimal()
+
+
+```
+
+# Valor real
+
+O nosso objetivo neste trabalho é estimar o parametro 
+$$\overline{y}_0=\frac{1}{N_0}\sum_{k\in U_0}y_k$$ 
+para o domínio escolhido, no nosso caso $U_0$ é domínio formado por mulheres. A variável de interesse serão as notas de matemática, ou seja $y_k$ = valor da nota de matemática do aluno $k$. Seja $S$ uma amostra escolhida da nossa população total do domínio, definimos a variável auxiliar para selecionar apenas os indivíduos do estudo, as mulheres. 
+$$v_k = \left\{ \begin{array}{lcc} y_k& se & k \in U_0 \\  \\ 0 & se & k \notin U_0 \end{array} \right.$$ 
+
+Começaremos calculando o valor real do parâmetro para estimar.
+
+```{r valor real mates}
+
+# Fazemos um subconjunto com os dados correspondentes às mulheres
+mulheres <- subset(dados, gender == "female")
+
+# Calculamos o tamanho total das mulheres (N_0)
+N_0 <- sum(dados$gender == "female")
+
+# Calculamos a média das notas en matematicas das mulheres (y_k)
+# notas_mulheres <- datos$math_score[datos$gender == "female"]
+nota_total_mulheres <- sum(mulheres[, 6])
+
+# Calculamos y_0 usando a fórmula
+y_0 <- nota_total_mulheres / N_0
+
+# Mostramos o resultado
+y_0
+
+```
+
+# Seleção de uma amostra aleatória SSR
+
+Para fazer isso, primeiro precisamos pegar uma amostra aleatória do conjunto de dados. Depois, dessa amostra retiramos apenas os valores que nos interessam para o domínio.
+
+```{r amostra}
+
+# Pegamos uma amostra aleatória de tamanho 100 seguindo um plano de amostragem SSR
+amostra <- sample(nrow(dados), 100, replace = FALSE)
+
+# Criamos um novo dataframe com a amostra aleatória
+amostra_aleatoria <- dados[amostra, ]
+
+# Para visualizar os primeiros 6 registros da amostra aleatória
+head(amostra_aleatoria)
+
+# Filtramos a amostra aleatória para obter apenas registros de gênero feminino
+amostra_mulheres <- subset(amostra_aleatoria, gender == "female")
+
+# Exibimos os primeiros registros do subconjunto de amostra
+head(amostra_mulheres)
+
+```
+
+# Estimador com não $N_0$ conhecido
+
+Estamos na situação em que não sabemos o tamanho total das mulheres na população. O estimador a emplear é 
+$$\hat{\overline y}_0=\frac{1}{n_0}\sum_{k\in S_0}y_k$$
+
+```{r estimador1}
+# Calculamos o tamanho das mulheres na amostra (n_0)
+n_0 <- sum(amostra_aleatoria$gender == "female")
+
+# Calculamos a média das notas das mulheres (y_k), precisamos definir outra vez a amostra da mulheres
+amostra_mulheres <- subset(amostra_aleatoria, gender == "female")
+nota_total_mulheres_amostra <- sum(amostra_mulheres[, 6])
+
+# Calculamos y_0 usando a fórmula
+y_0est <- nota_total_mulheres_amostra / n_0
+
+# Mostramos o resultado
+y_0est 
+
+```
+
+Vamos estimar a variância de $\hat{\overline y}_0$ usando a expressão: 
+$$ \widehat{Var}(\hat{\overline y}_0) = \left( 1-\frac{n}{N} \right)\frac{n}{n-1}\frac{n_0-1}{n_0}\frac{\hat{s}^2_{0y}}{n_0}$$
+onde
+$$\hat s_{0y}^2=\frac{1}{n_0-1}\sum_{k\in S_0}(y_k-\hat{\overline{y}}_0)^2=\frac{n_0}{n_0-1}\left(\frac{1}{n_0}\sum_{k\in S_0}y_k^2-\hat{\overline{y}}_0^2\right)$$
+
+```{r variancia1}
+# Calculamos a soma dos quadrados de y_k
+nota_total_mulheres_amostra_2 <- sum((amostra_mulheres[, 6])^2)
+
+# Calculamos a variância empírica corrigida
+s_0y <- n_0/(n_0-1)*(1/n_0*nota_total_mulheres_amostra_2-y_0est^2)
+
+# Calculamos a variância
+n <- nrow(amostra_aleatoria)
+N <- nrow(dados)
+vary_0est <- (1-n/N)*(n/(n-1))*((n_0-1)/(n_0))*((s_0y)/(n_0))
+vary_0est
+
+```
+Com a variância calculada podemos obter um intervalo de confiança de 95% que nos ajudará a calcular a probabilidade de cobertura. O intervalo pesquisado tem a forma
+$$\hat{\overline y}_0\pm z_{1-\frac{\alpha}{2}}\sqrt{Var(\hat{\overline y}_0)}$$
+onde $z_{1-\frac{\alpha}{2}}=1.96$. Já temos todos os dados necessários para calcular o intervalo de confiança.
+
+```{r intervalo1}
+ic1a <- y_0est-1.96*sqrt(vary_0est)
+ic1b <- y_0est+1.96*sqrt(vary_0est)
+cat("[", ic1a, ",", ic1b, "]", sep = "")
+
+```
+Logo margem de erro dos intervalos de confiança pelo o estimador e
+```{r erro}
+MarErr <- (ic1b-ic1a)/2
+
+MarErr
+```
+Note-se que se trata de um valor relativamente pequeno.
+
+# Estimador com $N_0$ conhecido
+
+Agora estamos na situação em que sabemos o tamanho total das mulheres na população. O estimador a considerar agora é 
+$$\tilde{\overline y}_0=\frac{N}{N_0}\frac{1}{n}\sum_{k\in S_0}y_k$$
+
+```{r estimador2}
+
+# Mantemos o tamanho total da população
+N <- nrow(dados)
+
+# E também o tamanho total da amostra
+n <- nrow(amostra_aleatoria)
+
+# Calculamos a média das notas das mulheres (y_k)
+amostra_mulheres <- subset(amostra_aleatoria, gender == "female")
+nota_total_mulheres_amostra <- sum(amostra_mulheres[, 6])
+
+# Calculamos y_0 usando a fórmula
+y_0est2 <- N*nota_total_mulheres_amostra / (n*N_0)
+
+# Mostramos o resultado
+y_0est2
+
+```
+
+Vamos estimar a variância de $\tilde{\overline y}_0$ usando a expressão:
+$$ \widehat{Var}(\tilde{\overline y}_0) = \frac{N^2}{N_0^2}\left( 1-\frac{n}{N} \right)\frac{\hat{s}^2_{v}}{n_0}$$
+onde
+$$\hat s_v^2=\frac{n_0-1}{n-1}\hat s_{0y}^2+\frac{n_0}{n-1}(1-\frac{n_0}{n})\hat{\overline y}_0^2$$
+```{r variancia2}
+# Calculamos a variância empírica corrigida
+s_v <- ((n_0-1)/(n-1))*s_0y+(n_0/(n-1))*(1-(n_0/n))*(y_0est)^2
+
+# Calculamos a variância
+vary_0est2 <- (N^2/(N_0)^2)*(1-(n/N))*(s_v/n_0)
+vary_0est2
+
+```
+
+Novamente pretendemos obter um intervalo de confiança de 95% para a probabilidade de cobertura. O intervalo pesquisado tem a forma
+$$\hat{\tilde y}_0\pm z_{1-\frac{\alpha}{2}}\sqrt{Var(\hat{\tilde y}_0)}$$
+onde $z_{1-\frac{\alpha}{2}}=1.96$
+
+```{r intervalo2}
+ic2a <- y_0est2-1.96*sqrt(vary_0est2)
+ic2b <- y_0est2+1.96*sqrt(vary_0est2)
+cat("[", ic2a, ",", ic2b, "]", sep = "")
+
+```
+Logo margem de erro dos intervalos de confiança pelo o estimador e
+```{r erro2}
+MarErr <- (ic2b-ic2a)/2
+
+MarErr
+```
+Note-se que se trata de um valor relativamente elevado e ainda mais se o compararmos com o estimador anterior.
+
+# Comparaçao entre $\tilde{\overline y}_0$ e $\hat{\overline y}_0$
+
+Vamos repetir este processo mais 100 vezes para podermos comparar os valores obtidos
+
+```{r comparacion}
+
+# Criamos listas vazias para adicionar dados e depois comparamos cada estimador graficamente. Repetimos com as variâncias e depois calculamos a probabilidade de cobertura.
+y_0est1_list = list()
+y_0est2_list = list()
+var1_list = list()
+var2_list = list()
+cob1 = 0
+cob2 = 0
+
+for (i in 1:100) {
+  
+# Pegamos uma amostra aleatória de tamanho 100 seguindo um plano de amostragem SSR
+amostra <- sample(nrow(dados), 100, replace = FALSE)
+# Criamos um novo dataframe com a amostra aleatória
+amostra_aleatoria <- dados[amostra, ]
+# Filtramos a amostra aleatória para obter apenas registros de gênero feminino
+amostra_mulheres <- subset(amostra_aleatoria, gender == "female")
+
+# Calculamos o tamanho das mulheres na amostra (n_0)
+n_0 <- sum(amostra_aleatoria$gender == "female")
+# Calculamos a média das notas das mulheres (y_k)
+nota_total_mulheres_amostra <- sum(amostra_mulheres[, 6])
+
+# Calculamos y_01 usando a fórmula
+y_0est <- nota_total_mulheres_amostra / n_0
+# Adicionamos o resultado do estimador 1
+y_0est1_list <- c(y_0est1_list,y_0est)
+
+# Mantemos o tamanho total da população
+N <- nrow(dados)
+# E também o tamanho total da amostra
+n <- nrow(amostra_aleatoria)
+
+# Calculamos y_02 usando a fórmula
+y_0est2 <- N*nota_total_mulheres_amostra / (n*N_0)
+# Adicionamos o resultado do estimador 2
+y_0est2_list <- c(y_0est2_list,y_0est2)
+
+# Calculamos a soma dos quadrados de y_k
+nota_total_mulheres_amostra_2 <- sum((amostra_mulheres[, 6])^2)
+# Calculamos a variância empírica corrigida
+s_0y <- n_0/(n_0-1)*(1/n_0*nota_total_mulheres_amostra_2-y_0est^2)
+# Calculamos a variância do estimador 1
+vary_0est <- (1-n/N)*(n/(n-1))*((n_0-1)/(n_0))*((s_0y)/(n_0))
+var1_list <- c(var1_list,vary_0est)
+
+# Calculamos a variância empírica corrigida
+s_v <- ((n_0-1)/(n-1))*s_0y+(n_0/(n-1))*(1-(n_0/n))*(y_0est)^2
+# Calculamos a variância do estimador 2
+vary_0est2 <- (N^2/(N_0)^2)*(1-(n/N))*(s_v/n_0)
+var2_list <- c(var2_list,vary_0est2)
+
+# Calculamos um intervalo de confiança para o estimador 1 para a probabilidade de cobertura
+ic1a <- y_0est-1.96*sqrt(vary_0est)
+ic1b <- y_0est+1.96*sqrt(vary_0est)
+if (ic1a <= y_0 && y_0 <= ic1b) {
+  check1 <- 1
+} else {
+  check1 <- 0
+}
+cob1 <- cob1+check1
+
+# Calculamos um intervalo de confiança para o estimador 2 para a probabilidade de cobertura
+ic2a <- y_0est2-1.96*sqrt(vary_0est2)
+ic2b <- y_0est2+1.96*sqrt(vary_0est2)
+if (ic2a <= y_0est2 && y_0est2 <= ic2b) {
+  check2 <- 1
+} else {
+  check2 <- 0
+}
+cob2 <- cob2+check2
+
+
+}
+
+p1 <- cob1/100
+p2 <- cob2/100
+
+
+ggplot() +
+  geom_boxplot(data = data.frame(x = "Estimador N0 não conhecido", y = unlist(y_0est1_list)), 
+               aes(x = x, y = y, fill = "Estimador N0 não conhecido"), 
+               position = "dodge", 
+               color = "black") +
+  geom_boxplot(data = data.frame(x = "Estimador N0 conhecido", y = unlist(y_0est2_list)), 
+               aes(x = x, y = y, fill = "Estimador N0 conhecido"), 
+               position = "dodge", 
+               color = "black") +
+    geom_hline(yintercept = c(y_0), 
+             color = c("red"), 
+             linetype = "dashed") +
+    scale_fill_manual(values = c("Estimador N0 não conhecido" = "yellow", "Estimador N0 conhecido" = "darkorchid1")) +
+  labs(title = "Comparação de Estimadores",
+       x = "Estimadores",
+       y = "Valor médio notas matemáticas")
+
+# Criamos o boxplot para os estimadores
+ggplot() +
+  geom_boxplot(data = data.frame(x = "Estimador N0 não conhecido", y = unlist(var1_list)), 
+               aes(x = x, y = y, fill = "Estimador N0 não conhecido"), 
+               position = "dodge", 
+               color = "black") +
+  geom_boxplot(data = data.frame(x = "Estimador N0 conhecido", y = unlist(var2_list)), 
+               aes(x = x, y = y, fill = "Estimador N0 conhecido"), 
+               position = "dodge", 
+               color = "black")  +
+    scale_fill_manual(values = c("Estimador N0 não conhecido" = "springgreen1", "Estimador N0 conhecido" = "darkorange1")) +
+  labs(title = "Comparação de Variância",
+       x = "Estimadores",
+       y = "Variâncias")
+
+
+p1
+p2
+
+```
+# Comparaçao
+Como podemos perceber graças aos boxplots, em ambos os casos os estimadores fornecem valores muito próximos da média real que calculamos no início do trabalho.
+
+O primeiro boxplot, o dos estimadores, nos mostra uma comparação entre os valores que o estimador assume quando N0 é conhecido, em roxo, e quando N0 não é conhecido, em amarelo.
+
+À primeira vista podemos ver que a mediana do estimador quando N0 é conhecido é muito semelhante ao do estimador quando N0 não é conhecido. Por outro lado, a amplitude interquartis no primeiro estimador é muito maior do que no segundo. Seguindo a mesma tendência, a amplitude total do primeiro estimador é maior que a amplitude total do segundo estimador.
+
+Ao olhar para os primeiros intervalos de confinça vemos que os valores obtidos para o primeiro estimador cabem no segundo intervalo e vice-versa.
+
+O segundo boxplot, o das variâncias, nos mostra uma comparação entre os valores que a variância assume quando N0 é conhecido, em laranja, e quando N0 não é conhecido, em verde.
+
+É muito evidente que a variância do estimador com N0 conhecido é muito maior que a variância do estimador com N0 desconhecido, o que leva a pensar que conhecer o tamanho N0 não representa nenhuma vantagem sobre o estimador.
+
+Por fim, as probabilidades de cobertura são dadas pelos valores p1 e p2. Observamos que p1 tem um valor muito alto e está próximo de 1 mas sem ser 1, o que condiz com o fato dos intervalos de confiança terem sido fixados em 95%. Por outro lado, p2 é 1, portanto a média real estará sempre em um intervalo de confiança usando o estimador quando N0 não é conhecido
+
+# Conclusões
+
+Observamos que quando a amostra é grande, o estimador $\hat{\overline y}_0$ parece ser mais eficiente na estimativa da média do que $\tilde{\overline y}_0$, sendo este um estimador cêntrico, sendo um resultado bastante incrível. Portanto, podemos pensar que embora tenhamos informações sobre o total $N_0$ do nosso domínio, os resultados sugerem que é melhor não utilizar esses dados para estimar a média. Estes resultados práticos estão de acordo com os resultados observados nas aulas teóricas.
+
+
