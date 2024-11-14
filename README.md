@@ -14,4 +14,4 @@
 
 (-)Métodos numéricos -> Lista de ejercicios hechos para la universidad de Málaga de la asignatura Métodos Numéricos I y II. Donde resuelvo ejercicios expuestos en las clases prácticas.
 
-(-)OptPrac2.nb -> Relación de ejercicios para la universidad de Málaga de la asignatura Optimización. Donde resuelvo ejercicios sobre el simplex con distintos métodos vistos en clase.
+(-)OptPrac2.nb -> Relación de ejercicios para la universidad de Málaga de la asignatura Optimización. Donde resuelvo ejercicios de programación lineal con distintos métodos vistos en clase.
