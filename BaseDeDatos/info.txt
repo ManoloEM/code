@@ -1,0 +1,1 @@
+Proyecto para la asignatura de base de datos donde teniamos que crear una pagina web de reseñas de peliculas
