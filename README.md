@@ -2,7 +2,7 @@
 
 (-)As-proyecto.Rmd -> Proyecto para la universidad de Coimbra de la asignatura Muestreos y Encuestas. Donde se compara la media muestral respecto de la real, usando método de monte Carlo para un plano SSR.
 
-(-)ProyectoONMatLab -> Proyecto para la universidad de Coimbra de la asignatura Optimizacion Numérica. Donde se trata de calibrar una red neuronal, aproximando una función mediante unos puntos observados y la valide mediante otro conjuntos de puntos de validación.
+(-)ProyectoONMatLab -> Proyecto para la universidad de Coimbra de la asignatura Optimización Numérica. Donde se trata de calibrar una red neuronal, aproximando una función mediante unos puntos observados y la valide mediante otro conjuntos de puntos de validación.
 
 (-)Modelizacion -> Lista de trabajos entregados para la asignatura de Modelizacion de la universidad de Coimbra. Temas diversos como la simulación de una especie/enfermadad hasta modelos de filtro de imagen.
 
@@ -13,3 +13,5 @@
 (-)Informática -> Lista de ejercicios hechos para la universidad de Málaga de la asignatura Informática. Donde resuelvo ejercicios expuestos en las clases prácticas.
 
 (-)Métodos numéricos -> Lista de ejercicios hechos para la universidad de Málaga de la asignatura Métodos Numéricos I y II. Donde resuelvo ejercicios expuestos en las clases prácticas.
+
+(-)OptPrac2.nb -> Relación de ejercicios para la universidad de Málaga de la asignatura Optimización. Donde resuelvo ejercicios sobre el simplex con distintos métodos vistos en clase.
