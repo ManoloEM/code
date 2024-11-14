@@ -10,4 +10,6 @@
 
 (-)Análisis numérico -> Lista de ejercicios hechos para la universidad de Málaga de la asignatura Análisis numérico. Donde resuelvo ejercicios tipo examen y recopilo codigo de métodos descritos que se usaban habitualmente para resolver problemas.
 
-(-)Informática -> Lista de ejercicios hechos para la universidad de Málaga de la asignatura Informática. Donde resuelvo ejercicios expuestos en las clases.
+(-)Informática -> Lista de ejercicios hechos para la universidad de Málaga de la asignatura Informática. Donde resuelvo ejercicios expuestos en las clases prácticas.
+
+(-)Métodos numéricos -> Lista de ejercicios hechos para la universidad de Málaga de la asignatura Métodos Numéricos I y II. Donde resuelvo ejercicios expuestos en las clases prácticas.
