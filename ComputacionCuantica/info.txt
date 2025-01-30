@@ -1,1 +1,1 @@
-Informacion del curso
+Recopilacion de algunas de las practicas realizadas para los modulos de IA e Internet Cuantico.
