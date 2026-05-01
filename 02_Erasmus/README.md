@@ -71,13 +71,11 @@ Proyecto de realizar una pagina web enlazada con una base de datos para la recol
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack tecnológico
 
-| Herramienta | Uso |
-|-------------|-----|
-| R / R Markdown | Análisis estadístico, generación de informes PDF |
-| MATLAB | Optimización numérica, aproximación funcional |
-| SQL | Trabajar con base de datos |
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=sqlite&logoColor=white)
+![R](https://img.shields.io/badge/R-276DC3?style=flat&logo=r&logoColor=white)
+![MATLAB](https://img.shields.io/badge/MATLAB-e16737?style=flat&logo=mathworks&logoColor=white)
 
 ---
 
