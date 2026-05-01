@@ -1,7 +1,6 @@
 # 👨‍💻 Manuel Enciso — Portafolio Académico de Código
 
 > Graduado en Matemáticas (UMA) | Realizando el Máster Universitario en Lógica, Computación e Inteligencia Artificial (US)  
-> GitHub: [@ManoloEM](https://github.com/ManoloEM)
 
 ---
 
@@ -9,14 +8,14 @@
 
 Este repositorio sirve como archivo estructurado de todo el código académico producido a lo largo de la formación universitaria. Cada carpeta corresponde a una etapa académica o especialización.
 
-El trabajo abarca cinco áreas:
+El código contiene:
 
 | Carpeta | Contenido | Periodo |
 |---------|-----------|---------|
-| [`01_grado_matematicas/`](https://github.com/ManoloEM/code/01_grado_matematicas/) | Matemáticas, algoritmos e introducción al ML | Grado UMA |
-| [`02_erasmus/`](./02_erasmus/) | Proyectos desarrollados durante el programa de intercambio en Coimbra | Erasmus  |
-| [`03_computacion_cuantica/`](./03_computacion_cuantica/) | Circuitos cuánticos, algoritmos y simulación | Curso de especialización Quant·UMA |
-| [`04_master_mulcia/`](./04_master_mulcia/) | Redes neuronales, XAI, ML adversarial, RL, sistemas expertos | Máster Sevilla MULCIA |
+| [`01_grado_matematicas/`](https://github.com/ManoloEM/code/tree/main/01_Grado_Matematicas/) | Matemáticas, algoritmos e introducción al ML | Grado UMA |
+| [`02_erasmus/`](https://github.com/ManoloEM/code/tree/main/02_Erasmus/) | Proyectos desarrollados durante el programa de intercambio en Coimbra | Erasmus  |
+| [`03_computacion_cuantica/`](https://github.com/ManoloEM/code/tree/main/03_Computacion_Cuantica/) | Circuitos cuánticos, algoritmos y simulación | Curso de especialización Quant·UMA |
+| [`04_master_mulcia/`](https://github.com/ManoloEM/code/tree/main/04_Master_MULCIA/) | Redes neuronales, XAI, ML adversarial, RL, sistemas expertos | Máster Sevilla MULCIA |
 
 ---
 
