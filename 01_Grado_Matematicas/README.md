@@ -1,4 +1,4 @@
-# 📐 Grado en Matemáticas — Universidad de Málaga
+# 🧮 01 — Grado en Matemáticas — Universidad de Málaga
 
 > Prácticas y proyectos del Grado en Matemáticas
 
