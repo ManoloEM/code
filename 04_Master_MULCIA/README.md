@@ -90,6 +90,3 @@ Sistema experto implementado en **CLIPS** para la asignatura **Ingeniería del C
 
 - El TFM está se encuentra en proceso. Tratando sobre la robustez de técnicas de explicabilidad ante diversos ataques adversarios, manteniendo la clasificación de redes neuronales (artículo de referencia:	arXiv:1906.07983).
 
----
-
-*← Volver al [portafolio principal](../README.md)*
