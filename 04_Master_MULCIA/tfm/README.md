@@ -189,7 +189,7 @@ En esta sección se muestran algunas de las figuras clave generadas en el TFM. L
 
 ### 5.1 Gradientes con texto superpuesto para distintos β
 
-#### β bajo vs β alto (visión global de la manipulación)
+#### β alto vs β bajo (visión global de la manipulación)
 
 
 <p align="center">
@@ -197,7 +197,7 @@ En esta sección se muestran algunas de las figuras clave generadas en el TFM. L
   &nbsp;&nbsp;
   <img src="imagenes/Ataque_adversario_beta1.jpg" width="45%" alt="Gradiente β=1.0"/>
 </p>
-<p align="center"><em>Izquierda: β = 1.0 &nbsp;|&nbsp; Derecha: β = 20.0</em></p>
+<p align="center"><em>Izquierda: β = 20.0 &nbsp;|&nbsp; Derecha: β = 1.0</em></p>
 
 
 ### 5.2 Barrido de β: imagen adversaria fija, explicaciones adversaria y original
@@ -207,20 +207,15 @@ Aquí se muestran dos rejillas:
 - En la segunda, el ataque está más limitado y se observa en qué rangos de β el texto “Universidad De Sevilla” sigue siendo visible en la explicación.
 
 
-<!-- Rejilla para β inicial alto (p.ej. b=20.0) -->
 
 <p align="center">
   <img src="imagenes/Suavizado_explicacion_b=20.png"
        width="80%" alt="Barrido β, ataque b=20"/>
-</p>
-
-<!-- Rejilla para β inicial bajo (p.ej. b=1.0) -->
-
-<p align="center">
+  &nbsp;&nbsp;
   <img src="imagenes/Suavizado_explicacion_b=1.jpg"
        width="80%" alt="Barrido β, ataque b=1"/>
 </p>
-
+<p align="center"><em>Izquierda: Ataque para β = 20.0 &nbsp;|&nbsp; Derecha: Ataque para β = 1.0</em></p>
 
 
 Cada figura se interpreta fila a fila:
