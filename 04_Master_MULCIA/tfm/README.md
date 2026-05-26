@@ -253,18 +253,24 @@ Las siguientes figuras muestran comparaciones cuantitativas mediante SSIM:
 Cada figura contiene:
 - Imagen original.  
 - Imagen adversaria.  
-- Diferencia RGB amplificada \(|X - X_{\text{adv}}| \times 5\).  
+- Diferencia RGB amplificada |X − X_adv| × 5.  
 - Mapa SSIM por píxel (promedio de los 3 canales), junto con el valor global de SSIM.
 
 ---
 
 ## 6. Créditos y licencia
 
-El código de este repositorio se basa en el trabajo de Pan Kessel,  
-**“Explanations can be manipulated and geometry is to blame”**, disponible en:
+El código de este repositorio se basa en el trabajo de Pan Kessel,
+**"Explanations can be manipulated and geometry is to blame"**, disponible en:
 
-> https://github.com/pankessel/adv_explanation_ref
+> [https://github.com/pankessel/adv_explanation_ref](https://github.com/pankessel/adv_explanation_ref)
 
-Los archivos `run_attack-beta.py`, `run_attack-multiples-betas.py` y `utils_modificado.py` incluyen cabeceras con la licencia original Apache 2.0 y las modificaciones específicas realizadas para este TFM.
+Los archivos `run_attack-beta.py`, `run_attack-multiples-betas.py` y `utils_modificado.py`
+incluyen cabeceras con la licencia original Apache 2.0 y las modificaciones específicas
+realizadas para este TFM.
+
+Las imágenes de muestra utilizadas en los experimentos (conejo) han sido obtenidas de
+[Freepik](https://www.freepik.com) bajo su licencia gratuita. Se requiere atribución:
+> Imagen de [Freepik](https://www.freepik.com)
 
 ---
