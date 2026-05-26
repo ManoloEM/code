@@ -234,6 +234,9 @@ Las siguientes figuras muestran comparaciones cuantitativas mediante SSIM:
        width="90%" alt="SSIM β=20.0"/>
   
 </p>
+<p align="center">
+<em>SSIM = 0.976 — Ataque con β = 20.0</em>
+</p>
 <em>SSIM = 0.976 — Ataque con β = 20.0</em>
 
 <p align="center">
@@ -241,7 +244,10 @@ Las siguientes figuras muestran comparaciones cuantitativas mediante SSIM:
        width="90%" alt="SSIM β=1.0"/>
   
 </p>
+<p align="center">
 <em>SSIM = 0.952 — Ataque con β = 1.0</em>
+</p>
+
 
 
 
