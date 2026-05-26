@@ -210,10 +210,10 @@ Aquí se muestran dos rejillas:
 
 <p align="center">
   <img src="imagenes/Suavizado_explicacion_b=20.png"
-       width="80%" alt="Barrido β, ataque b=20"/>
+       width="40%" alt="Barrido β, ataque b=20"/>
   &nbsp;&nbsp;
   <img src="imagenes/Suavizado_explicacion_b=1.jpg"
-       width="80%" alt="Barrido β, ataque b=1"/>
+       width="40%" alt="Barrido β, ataque b=1"/>
 </p>
 <p align="center"><em>Izquierda: Ataque para β = 20.0 &nbsp;|&nbsp; Derecha: Ataque para β = 1.0</em></p>
 
