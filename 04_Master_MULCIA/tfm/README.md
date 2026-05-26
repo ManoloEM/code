@@ -191,14 +191,14 @@ En esta sección se muestran algunas de las figuras clave generadas en el TFM. L
 
 #### β bajo vs β alto (visión global de la manipulación)
 
-```markdown
+
 <p align="center">
   <img src="imagenes/Ataque_adversario_beta20.jpg" width="45%" alt="Gradiente β=20.0"/>
   &nbsp;&nbsp;
   <img src="imagenes/Ataque_adversario_beta1.jpg" width="45%" alt="Gradiente β=1.0"/>
 </p>
 <p align="center"><em>Izquierda: β = 1.0 &nbsp;|&nbsp; Derecha: β = 20.0</em></p>
-```
+
 
 ### 5.2 Barrido de β: imagen adversaria fija, explicaciones adversaria y original
 
@@ -206,7 +206,7 @@ Aquí se muestran dos rejillas:
 - En la primera, la **imagen adversaria** se mantiene fija y se visualizan las explicaciones adversaria y original para distintos β cuando el texto aparece con alta intensidad (ataque fuerte).  
 - En la segunda, el ataque está más limitado y se observa en qué rangos de β el texto “Universidad De Sevilla” sigue siendo visible en la explicación.
 
-```markdown
+
 <!-- Rejilla para β inicial alto (p.ej. b=20.0) -->
 
 <p align="center">
@@ -221,7 +221,7 @@ Aquí se muestran dos rejillas:
        width="80%" alt="Barrido β, ataque b=1"/>
 </p>
 
-```
+
 
 Cada figura se interpreta fila a fila:
 - Columna 1: imagen adversaria \( x_{\text{adv}} \) (igual en todas las filas).  
