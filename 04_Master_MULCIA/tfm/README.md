@@ -232,7 +232,7 @@ Cada figura se interpreta fila a fila:
 
 Las siguientes figuras muestran comparaciones cuantitativas mediante SSIM:
 
-```markdown
+
 
 <p align="center">
   <img src="imagenes/ssim_comparison_b=20.png"
@@ -246,7 +246,7 @@ Las siguientes figuras muestran comparaciones cuantitativas mediante SSIM:
 </p>
 <p align="center"><em>SSIM = 0.976 — Ataque con β = 1.0</em></p>
 
-```
+
 
 Cada figura contiene:
 - Imagen original.  
