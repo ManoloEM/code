@@ -1,8 +1,8 @@
 # Robustez de métodos de explicabilidad frente a ataques adversarios
 
-Este repositorio contiene el código y los experimentos de mi Trabajo Fin de Máster (MULCIA, Universidad de Sevilla) sobre la **manipulación de explicaciones en redes neuronales profundas** y el estudio de la **robustez de los métodos de explicabilidad** frente a ataques adversarios, inspirado en el trabajo de Pan Kessel *“Explanations can be manipulated and geometry is to blame”*.
+Este repositorio contiene el código y los experimentos de mi Trabajo Fin de Máster (MULCIA, Universidad de Sevilla) sobre la **manipulación de explicaciones (XAI) en redes neuronales profundas** y el estudio de la **robustez de los métodos de explicabilidad** basados en el gradiente frente a ataques adversarios, inspirado en el trabajo de Pan Kessel *“Explanations can be manipulated and geometry is to blame”*.
 
-El objetivo principal es analizar cómo, manteniendo la predicción de la red, es posible alterar significativamente el mapa de calor asociado a la explicación, y cómo influye el parámetro de suavizado \( \beta \) en dicha robustez.
+El objetivo principal es analizar cómo, manteniendo la predicción de la red, es posible alterar arbitrariamente el mapa de calor asociado a la explicación, y cómo influye el parámetro de suavizado \( \beta \) empleado en la defensa de ataques adversarios (AdvXAI).
 
 ---
 
