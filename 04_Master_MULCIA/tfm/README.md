@@ -2,7 +2,7 @@
 
 Este repositorio contiene el código y los experimentos de mi Trabajo Fin de Máster (MULCIA, Universidad de Sevilla) sobre la **manipulación de explicaciones (XAI) en redes neuronales profundas** y el estudio de la **robustez de los métodos de explicabilidad** basados en el gradiente frente a ataques adversarios, inspirado en el trabajo de Pan Kessel *“Explanations can be manipulated and geometry is to blame”*.
 
-El objetivo principal es analizar cómo, manteniendo la predicción de la red, es posible alterar arbitrariamente el mapa de calor asociado a la explicación, y cómo influye el parámetro de suavizado \( \beta \) empleado en la defensa de ataques adversarios (AdvXAI).
+El objetivo principal es analizar cómo, manteniendo la predicción de la red, es posible alterar arbitrariamente el mapa de calor asociado a la explicación, y cómo influye el parámetro de suavizado β empleado en la defensa de ataques adversarios (AdvXAI).
 
 ---
 
@@ -33,7 +33,7 @@ Ejecuta un **ataque adversario sobre el mapa de explicaciones usando una única 
 
 - Genera el mapa de calor original \( h(x) \) y un mapa objetivo \(\tilde{h}(x)\) añadiendo el texto “Universidad De Sevilla” mediante `get_expl_with_text`.  
 - Optimiza una imagen adversaria \( x_{\text{adv}} \) para que su explicación se parezca a \(\tilde{h}(x)\) mientras mantiene la predicción original de la red.  
-- Permite fijar un valor concreto de \( \beta \) en las activaciones `softplus` mediante los parámetros `--beta_growth` y `--beta_value`.  
+- Permite fijar un valor concreto de β en las activaciones `softplus` mediante los parámetros `--beta_growth` y `--beta_value`.  
 - Genera una figura de resumen con imagen original, mapa objetivo y mapa adversario, así como la imagen adversaria desnormalizada y un fichero de métricas (MSE, MAE). [file:66]
 
 Uso típico:
@@ -51,10 +51,10 @@ python run_attack-beta.py \
 
 ### 2.2 `run_attack-multiples-betas.py`
 
-Extiende el ataque anterior para estudiar de forma sistemática la **robustez de las explicaciones frente a distintos valores de \( \beta \)**:
+Extiende el ataque anterior para estudiar de forma sistemática la **robustez de las explicaciones frente a distintos valores de β**:
 
-- Ejecuta el ataque adversario usando un valor inicial de \( \beta \).  
-- Una vez obtenida \( x_{\text{adv}} \), evalúa las explicaciones adversaria y original para una lista de valores \( \beta \in \{20, 10, 5, 1, 0.9, 0.8\} \) (o un rango definido por el usuario).  
+- Ejecuta el ataque adversario usando un valor inicial de β.  
+- Una vez obtenida \( x_{\text{adv}} \), evalúa las explicaciones adversaria y original para una lista de valores β \in \{20, 10, 5, 1, 0.9, 0.8\} \) (o un rango definido por el usuario).  
 - Usa la función `plot_overview_grid` de `utils_modificado` para generar una figura en forma de rejilla, con N filas (un valor de β por fila) y 3 columnas: imagen adversaria, explicación adversaria y explicación original. [file:67][file:69]  
 - Guarda la imagen adversaria desnormalizada y un fichero de texto con predicciones y métricas (MSE, MAE, pérdida de explicabilidad final).
 
