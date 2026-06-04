@@ -33,16 +33,16 @@ Demostrar que, manteniendo la predicción de la red neuronal, es posible alterar
 #### Resultados preliminares
 
 <p align="center">
-  <img src="TFM/imagenes/Ataque_adversario_beta20.jpg" width="45%" alt="Ataque adversario β=20.0"/>
+  <img src="tfm/imagenes/Ataque_adversario_beta20.jpg" width="45%" alt="Ataque adversario β=20.0"/>
   &nbsp;&nbsp;
-  <img src="TFM/imagenes/Ataque_adversario_beta1.jpg" width="45%" alt="Ataque adversario β=1.0"/>
+  <img src="tfm/imagenes/Ataque_adversario_beta1.jpg" width="45%" alt="Ataque adversario β=1.0"/>
 </p>
 <p align="center"><em>Izquierda: ataque con β = 20.0 — el texto "Universidad De Sevilla" es claramente visible en la explicación adversaria. &nbsp;|&nbsp; Derecha: ataque con β = 1.0 — el texto apenas se percibe, lo que indica mayor robustez a valores bajos de β.</em></p>
 
 <p align="center">
-  <img src="TFM/imagenes/Suavizado_explicacion_b=20.png" width="40%" alt="Barrido β, ataque b=20"/>
+  <img src="tfm/imagenes/Suavizado_explicacion_b=20.png" width="40%" alt="Barrido β, ataque b=20"/>
   &nbsp;&nbsp;
-  <img src="TFM/imagenes/Suavizado_explicacion_b=1.jpg" width="40%" alt="Barrido β, ataque b=1"/>
+  <img src="tfm/imagenes/Suavizado_explicacion_b=1.jpg" width="40%" alt="Barrido β, ataque b=1"/>
 </p>
 <p align="center"><em>Barrido de β para imagen adversaria fija. Izquierda: ataque con β = 20.0. Derecha: ataque con β = 1.0. Cada fila corresponde a un valor de β evaluado; las columnas muestran imagen adversaria, explicación adversaria y explicación original.</em></p>
 
