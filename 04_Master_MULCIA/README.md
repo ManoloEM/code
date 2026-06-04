@@ -54,7 +54,7 @@ Demostrar que, manteniendo la predicción de la red neuronal, es posible alterar
 <p align="center"><em>Barrido de β para imagen adversaria fija. Izquierda: ataque con β = 20.0. Derecha: ataque con β = 1.0. Cada fila corresponde a un valor de β evaluado para la explicación; las columnas muestran imagen adversaria, explicación adversaria y explicación original.</em></p>
 
 > [!TIP]
-> Para una descripción completa de los scripts, instrucciones de instalación y reproducción de experimentos, consulta el [`README.md` de la carpeta TFM](./TFM/README.md).
+> Para una descripción completa de los scripts, instrucciones de instalación y reproducción de experimentos, consulta el [`README.md` de la carpeta TFM](./tfm/README.md).
 
 #### Referencia
 
