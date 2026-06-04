@@ -256,6 +256,8 @@ Cada figura contiene:
 - Diferencia RGB amplificada |X − X_adv| × 5.  
 - Mapa SSIM por píxel (promedio de los 3 canales), junto con el valor global de SSIM.
 
+Para el conjunto total de imágenes, consulta [La carpeta imagenes](./imagenes).
+
 ---
 
 ## 6. Créditos y licencia
