@@ -12,6 +12,48 @@ Trabajos, prácticas y proyectos realizados durante el Máster Universitario en 
 
 ## Contenido
 
+### 📁 TFM — Robustez de métodos de explicabilidad frente a ataques adversarios
+
+Estudio sobre la **manipulación de explicaciones XAI en redes neuronales profundas** y el análisis de la **robustez de los métodos de explicabilidad basados en el gradiente** frente a ataques adversarios. El trabajo se basa en el artículo de Pan Kessel *"Explanations can be manipulated and geometry is to blame"* (arXiv:1906.07983) y extiende sus experimentos para estudiar cómo el parámetro de suavizado β influye en la efectividad y resistencia de los ataques.
+
+#### Objetivo
+
+Demostrar que, manteniendo la predicción de la red neuronal, es posible alterar arbitrariamente el mapa de calor de la explicación asociada, y cuantificar en qué medida un valor de β elevado actúa como mecanismo de defensa frente a dicha manipulación.
+
+#### Contenido de la carpeta
+
+| Archivo / Carpeta | Descripción |
+|---|---|
+| `codigo/run_attack-beta.py` | Ataque adversario con β fijo sobre una imagen. Genera mapa de calor objetivo con texto superpuesto y optimiza la imagen adversaria. |
+| `codigo/run_attack-multiples-betas.py` | Barrido sistemático de β: evalúa explicaciones adversaria y original para una lista de valores de β y genera una rejilla comparativa. |
+| `codigo/ssim_compare.py` | Comparación cuantitativa original vs. adversaria mediante índice SSIM. Genera figura de 4 paneles con diferencia RGB y mapa SSIM por píxel. |
+| `codigo/utils_modificado.py` | Utilidades adaptadas del repo original: `plot_overview`, `plot_overview_grid`, `load_image`, `get_expl_with_text`. |
+| `imagenes/` | Figuras generadas en los experimentos (gradientes, barridos de β, comparaciones SSIM). |
+
+#### Resultados preliminares
+
+<p align="center">
+  <img src="TFM/imagenes/Ataque_adversario_beta20.jpg" width="45%" alt="Ataque adversario β=20.0"/>
+  &nbsp;&nbsp;
+  <img src="TFM/imagenes/Ataque_adversario_beta1.jpg" width="45%" alt="Ataque adversario β=1.0"/>
+</p>
+<p align="center"><em>Izquierda: ataque con β = 20.0 — el texto "Universidad De Sevilla" es claramente visible en la explicación adversaria. &nbsp;|&nbsp; Derecha: ataque con β = 1.0 — el texto apenas se percibe, lo que indica mayor robustez a valores bajos de β.</em></p>
+
+<p align="center">
+  <img src="TFM/imagenes/Suavizado_explicacion_b=20.png" width="40%" alt="Barrido β, ataque b=20"/>
+  &nbsp;&nbsp;
+  <img src="TFM/imagenes/Suavizado_explicacion_b=1.jpg" width="40%" alt="Barrido β, ataque b=1"/>
+</p>
+<p align="center"><em>Barrido de β para imagen adversaria fija. Izquierda: ataque con β = 20.0. Derecha: ataque con β = 1.0. Cada fila corresponde a un valor de β evaluado; las columnas muestran imagen adversaria, explicación adversaria y explicación original.</em></p>
+
+> [!TIP]
+> Para una descripción completa de los scripts, instrucciones de instalación y reproducción de experimentos, consulta el [`README.md` de la carpeta TFM](./TFM/README.md).
+
+#### Referencia
+
+> Pan Kessel & Stellan Johannink. *"Explanations can be manipulated and geometry is to blame."* arXiv:1906.07983 (2019).
+> Repositorio original: [github.com/pankessel/adv_explanation_ref](https://github.com/pankessel/adv_explanation_ref)
+
 ### 📁 Aprendizaje Automático
 
 Cuestionarios y prácticas de la asignatura **Aprendizaje Automático**, desarrollados en Python con scikit-learn sobre conjuntos de datos reales.
