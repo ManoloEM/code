@@ -1,6 +1,6 @@
 # 👨‍💻 Manuel Enciso — Portafolio Académico de Código
 
-> Graduado en Matemáticas (UMA) | Realizando el Máster Universitario en Lógica, Computación e Inteligencia Artificial (US)  
+> Graduado en Matemáticas (UMA) | Máster Universitario en Lógica, Computación e Inteligencia Artificial (US)  
 
 ---
 
