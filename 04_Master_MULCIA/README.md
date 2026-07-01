@@ -88,6 +88,34 @@ Prácticas de la asignatura **Aprendizaje Profundo**, centradas en redes neurona
 
 **Stack:** Python, TensorFlow, Keras, NumPy, Matplotlib, Jupyter Notebook.
 
+
+---
+### 📁 Seminario Avanzado de Aprendizaje Automático
+
+Entregas de la asignatura **Seminario Avanzado de Aprendizaje Automático**, organizadas en tres trabajos independientes que cubren explicabilidad, generación de texto con modelos Transformer y clasificación con BERT.
+
+| Entrega | Tema | Descripción |
+|---|---|---|
+| **Entrega 1** — Explicabilidad | Reproducción de técnicas XAI | Estudio y reproducción de métodos de explicabilidad presentados en artículos de referencia. Implementación práctica de técnicas como Guided Integrated Gradients, ShapleyCAM y AdvXAI sobre modelos entrenados, analizando la interpretación de las predicciones y comparando el comportamiento de cada método. |
+| **Entrega 2** — Generación de texto | Fine-tuning de modelo Transformer | Entrenamiento de un modelo Transformer para la generación automática de texto en dos dominios: **canciones de rap** y **recetas de cocina**. El modelo aprende los patrones estilísticos y estructurales propios de cada dominio a partir de datasets específicos, generando texto y temáticamente apropiado. |
+| **Entrega 3** — Clasificación de reseñas | Fine-tuning de BERT | Fine-tuning de un modelo **BERT** preentrenado para la clasificación de reseñas de Amazon en una escala de **1 a 5 estrellas**. Se aborda el problema como clasificación multiclase, incluyendo preprocesado del dataset, tokenización con el vocabulario de BERT y evaluación del modelo mediante métricas sobre clasificación y probabilidades de confusión. |
+
+**Stack:** Python, PyTorch, Hugging Face Transformers, datasets, scikit-learn, Jupyter Notebook.
+
+---
+### 📁 Inteligencia Artificial y Ciencia del Dato
+
+La asignatura *Inteligencia Artificial y Ciencia del Dato* aborda el ciclo completo del
+aprendizaje automático, desde la exploración y preprocesado de datos hasta el entrenamiento
+y optimización de modelos predictivos. La carpeta contiene dos trabajos complementarios.
+
+| Archivo | Descripción |
+|---|---|
+| `Metodos_IA.py` | Implementación desde cero de algoritmos clásicos de aprendizaje automático |
+| `Proyecto_Annealing.ipynb` | Pipeline completo de preprocesado y modelado sobre el dataset *Steel Plates Faults* |
+
+**Stack:** Python, Jupyter, Scikit-Learn, Pandas
+
 ---
 ### 📁 TrabajoFinalSVRAI — Monte Carlo Tree Search con Incertidumbre (Python)
 
@@ -134,8 +162,4 @@ Sistema experto implementado en **CLIPS** para la asignatura **Ingeniería del C
 ![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=flat&logo=latex&logoColor=white)
 
 ---
-
-## Notas
-
-- El TFM está se encuentra en proceso. Tratando sobre la robustez de técnicas de explicabilidad ante diversos ataques adversarios, manteniendo la clasificación de redes neuronales (artículo de referencia:	arXiv:1906.07983).
 
