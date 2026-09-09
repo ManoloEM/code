@@ -1,12 +1,14 @@
-# Robustez de métodos de explicabilidad frente a ataques adversarios
+# Robustness of Explanation Methods Against Adversarial Attacks
 
-Este repositorio contiene el código y los experimentos de mi Trabajo Fin de Máster (MULCIA, Universidad de Sevilla) sobre la **manipulación de explicaciones (XAI) en redes neuronales profundas** y el estudio de la **robustez de los métodos de explicabilidad** basados en el gradiente frente a ataques adversarios, inspirado en el trabajo de Pan Kessel *“Explanations can be manipulated and geometry is to blame”*.
+This repository contains the code and experiments for my Master's Thesis (MULCIA, University of Seville) on the **manipulation of explanations (XAI) in deep neural networks** and the study of the **robustness of gradient-based explanation methods** against adversarial attacks, inspired by Pan Kessel's work *“Explanations can be manipulated and geometry is to blame”*.
 
-El objetivo principal es analizar cómo, manteniendo la predicción de la red, es posible alterar arbitrariamente el mapa de calor asociado a la explicación, y cómo influye el parámetro de suavizado β empleado en la defensa de ataques adversarios (AdvXAI).
+The main goal is to analyze how, while keeping the network prediction unchanged, it is possible to arbitrarily alter the heatmap associated with the explanation, and how the smoothing parameter β used in the defense against adversarial attacks (AdvXAI) influences this behavior.
+
+[🇪🇸 Read the Spanish version](README_ES.md)
 
 ---
 
-## 1. Estructura del repositorio
+## 1. Repository structure
 
 ```text
 TFM/
@@ -20,23 +22,23 @@ TFM/
 └── imagenes
 ```
 
-- `codigo/`: scripts para lanzar ataques y análisis (ataque con β fijo, barridos de β, comparación SSIM).   
-- `imagenes/`: resultados por experimento.  
+- `codigo/`: scripts for launching attacks and analyses (fixed-β attack, β sweeps, SSIM comparison).   
+- `imagenes/`: results produced for each experiment.  
 
 ---
 
-## 2. Scripts principales
+## 2. Main scripts
 
 ### 2.1 `run_attack-beta.py`
 
-Ejecuta un **ataque adversario sobre el mapa de explicaciones usando una única imagen**:
+Runs an **adversarial attack on the explanation map using a single image**:
 
-- Genera el mapa de calor original \( h(x) \) y un mapa objetivo \(\tilde{h}(x)\) añadiendo el texto “Universidad De Sevilla” mediante `get_expl_with_text`.  
-- Optimiza una imagen adversaria \( x_{\text{adv}} \) para que su explicación se parezca a \(\tilde{h}(x)\) mientras mantiene la predicción original de la red.  
-- Permite fijar un valor concreto de β en las activaciones `softplus` mediante los parámetros `--beta_growth` y `--beta_value`.  
-- Genera una figura de resumen con imagen original, mapa objetivo y mapa adversario, así como la imagen adversaria desnormalizada y un fichero de métricas (MSE, MAE). [file:66]
+- Generates the original heatmap \( h(x) \) and a target map \(\tilde{h}(x)\) by adding the text “Universidad De Sevilla” through `get_expl_with_text`.  
+- Optimizes an adversarial image \( x_{\text{adv}} \) so that its explanation resembles \(\tilde{h}(x)\) while keeping the network's original prediction unchanged.  
+- Allows setting a specific β value in the `softplus` activations via the `--beta_growth` and `--beta_value` parameters.  
+- Produces a summary figure with the original image, target map, and adversarial map, as well as the denormalized adversarial image and a metrics file (MSE, MAE). [file:66]
 
-Uso típico:
+Typical usage:
 
 ```bash
 cd src
@@ -51,14 +53,14 @@ python run_attack-beta.py \
 
 ### 2.2 `run_attack-multiples-betas.py`
 
-Extiende el ataque anterior para estudiar de forma sistemática la **robustez de las explicaciones frente a distintos valores de β**:
+Extends the previous attack to systematically study the **robustness of explanations for different β values**:
 
-- Ejecuta el ataque adversario usando un valor inicial de β.  
-- Una vez obtenida \( x_{\text{adv}} \), evalúa las explicaciones adversaria y original para una lista de valores β \in \{20, 10, 5, 1, 0.9, 0.8\} \) (o un rango definido por el usuario).  
-- Usa la función `plot_overview_grid` de `utils_modificado` para generar una figura en forma de rejilla, con N filas (un valor de β por fila) y 3 columnas: imagen adversaria, explicación adversaria y explicación original. [file:67][file:69]  
-- Guarda la imagen adversaria desnormalizada y un fichero de texto con predicciones y métricas (MSE, MAE, pérdida de explicabilidad final).
+- Runs the adversarial attack using an initial β value.  
+- Once \( x_{\text{adv}} \) is obtained, it evaluates the adversarial and original explanations for a list of β values \in \{20, 10, 5, 1, 0.9, 0.8\} (or for a user-defined range).  
+- Uses the `plot_overview_grid` function from `utils_modificado` to generate a grid figure with N rows (one β value per row) and 3 columns: adversarial image, adversarial explanation, and original explanation. [file:67][file:69]  
+- Saves the denormalized adversarial image and a text file with predictions and metrics (MSE, MAE, final explanation loss).
 
-Ejemplo:
+Example:
 
 ```bash
 cd src
@@ -73,21 +75,21 @@ python run_attack-multiples-betas.py \
 
 ### 2.3 `utils_modificado.py`
 
-Conjunto de utilidades adaptadas del archivo `utils.py` del repositorio original `adv_explanation_ref`:
+A set of utilities adapted from the `utils.py` file in the original `adv_explanation_ref` repository:
 
-- `plot_overview`: versión extendida para visualizar imágenes y mapas de calor junto a métricas (MSE entre imágenes y entre explicaciones).  
-- `plot_overview_grid`: visualización específica para barridos de \( \beta \), con filas para cada valor de \( \beta \) y columnas para imagen adversaria, explicación adversaria y explicación original.  
-- `load_image`: carga de imágenes con tratamiento específico para PNG, garantizando conversión a RGB y preprocesado estilo ImageNet (resize 256, center crop 224, normalización).  
-- `get_expl_with_text`: variante de generación de explicaciones que superpone el texto “Universidad De Sevilla” sobre el mapa de calor antes del colapso de canales, controlando la intensidad mediante un factor configurable. [file:69]
+- `plot_overview`: extended version for visualizing images and heatmaps together with metrics (MSE between images and between explanations).  
+- `plot_overview_grid`: visualization specifically designed for β sweeps, with rows for each β value and columns for the adversarial image, adversarial explanation, and original explanation.  
+- `load_image`: image loading with special handling for PNG files, ensuring RGB conversion and ImageNet-style preprocessing (resize 256, center crop 224, normalization).  
+- `get_expl_with_text`: explanation-generation variant that overlays the text “Universidad De Sevilla” on the heatmap before channel collapse, controlling intensity with a configurable factor. [file:69]
 
 ### 2.4 `ssim_compare.py`
 
-Script auxiliar para **comparar imagen original y adversaria** mediante el índice SSIM:
+A helper script to **compare the original and adversarial images** using the SSIM index:
 
-- Carga dos imágenes, las redimensiona al mismo tamaño y calcula el SSIM multicanal.  
-- Genera una figura con 4 paneles: imagen original, imagen adversaria, diferencia RGB amplificada y mapa SSIM promedio de los tres canales, con el valor global de SSIM en el título. [file:68]
+- Loads two images, resizes them to the same size, and computes multichannel SSIM.  
+- Generates a figure with 4 panels: original image, adversarial image, amplified RGB difference, and per-channel average SSIM map, with the global SSIM value in the title. [file:68]
 
-Uso:
+Usage:
 
 ```bash
 cd src
@@ -99,32 +101,32 @@ python ssim_compare.py \
 
 ---
 
-## 3. Entorno y dependencias
+## 3. Environment and dependencies
 
-Las principales dependencias se listan en `requirements.txt`. A grandes rasgos:
+The main dependencies are listed in `requirements.txt`. In broad terms:
 
 - Python 3.[X]  
 - `torch`, `torchvision`  
-- `pytorch-msssim` (para SSIM tensorial)  
+- `pytorch-msssim` (for tensor-based SSIM)  
 - `numpy`, `matplotlib`, `Pillow`  
-- `scikit-image` (para SSIM sobre imágenes RGB en `ssim_compare.py`) 
+- `scikit-image` (for SSIM on RGB images in `ssim_compare.py`) 
 
-Creación de entorno recomendado:
+Recommended environment setup:
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate   # en Windows: .venv\Scripts\activate
+source .venv/bin/activate   # on Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 ---
 
-## 4. Cómo reproducir los experimentos
+## 4. How to reproduce the experiments
 
-### 4.1 Generación de un ejemplo adversario con β fijo
+### 4.1 Generating an adversarial example with fixed β
 
-1. Colocar la imagen original en `data/original/` (por ejemplo `conejo.jpg`).  
-2. Ejecutar `run_attack-beta.py` indicando el valor de β y el método de explicabilidad:
+1. Place the original image in `data/original/` (for example `conejo.jpg`).  
+2. Run `run_attack-beta.py` specifying the β value and the explanation method:
 
 ```bash
 python src/run_attack-beta.py \
@@ -138,16 +140,14 @@ python src/run_attack-beta.py \
   --output_dir experiments/single_beta/
 ```
 
-     
+3. The script will generate:
+   - An adversarial image in `experiments/single_beta/`.  
+   - An overview figure (`overview_...png`).  
+   - A `resultados_*.txt` file with predictions and metrics (MSE, MAE, etc.).
 
-3. El script generará:
-   - Una imagen adversaria en `experiments/single_beta/`.  
-   - Una figura de overview (`overview_...png`).  
-   - Un fichero `resultados_*.txt` con predicciones y métricas (MSE, MAE, etc.).
+### 4.2 Robustness analysis by varying β
 
-### 4.2 Análisis de robustez variando β
-
-1. Ejecutar `run_attack-multiples-betas.py` indicando el valor de β objetivo, el rango de β y el método de explicabilidad:
+1. Run `run_attack-multiples-betas.py` specifying the target β value, the β range, and the explanation method:
 
 ```bash
 python src/run_attack-multiples-betas.py \
@@ -161,16 +161,15 @@ python src/run_attack-multiples-betas.py \
   --method gradient \
   --output_dir experiments/multi_beta/
 ```
-      
 
-2. El script:
-   - Construye un rango de β (por defecto `[20.0, 10.0, 5.0, 1.0, 0.9, 0.8]`).  
-   - Evalúa explicaciones adversaria y original para cada β.  
-   - Genera una figura de rejilla (`overview_Beta_proof_...png`) donde cada fila corresponde a un valor de β.
+2. The script will:
+   - Build a β range (default: `[20.0, 10.0, 5.0, 1.0, 0.9, 0.8]`).  
+   - Evaluate adversarial and original explanations for each β.  
+   - Generate a grid figure (`overview_Beta_proof_...png`) where each row corresponds to a β value.
 
-### 4.3 Comparación estructural (SSIM) entre imagen original y adversaria
+### 4.3 Structural comparison (SSIM) between original and adversarial images
 
-Usar `ssim_compare.py` para visualizar diferencias y el valor global de SSIM:
+Use `ssim_compare.py` to visualize the differences and the global SSIM value:
 
 ```bash
 python ../ssim_compare.py \
@@ -179,100 +178,84 @@ python ../ssim_compare.py \
   imagenes/ssim_comparison_b-20-8.jpg
 ```
 
-El resultado es una figura con SSIM global en el título, diferencia RGB ampliada y mapa SSIM por píxel.
+The result is a figure with the global SSIM in the title, amplified RGB difference, and per-pixel SSIM map.
 
 ---
 
-## 5. Resultados experimentales (figuras)
+## 5. Experimental results (figures)
 
-En esta sección se muestran algunas de las figuras clave generadas en el TFM. Las rutas asumen que has colocado las imágenes en la carpeta `imagenes/` como se indica al principio (ajusta la ruta si usas otra).
+This section shows some of the key figures generated in the thesis. The paths assume that the images have been placed in the `imagenes/` folder as indicated above (adjust the path if you use another one).
 
-### 5.1 Gradientes con texto superpuesto para distintos β
+### 5.1 Gradients with overlaid text for different β values
 
-#### β alto vs β bajo (visión global de la manipulación)
-
+#### High β vs low β (global view of the manipulation)
 
 <p align="center">
-  <img src="imagenes/Ataque_adversario_beta20.jpg" width="45%" alt="Gradiente β=20.0"/>
+  <img src="imagenes/Ataque_adversario_beta20.jpg" width="45%" alt="Gradient β=20.0"/>
   &nbsp;&nbsp;
-  <img src="imagenes/Ataque_adversario_beta1.jpg" width="45%" alt="Gradiente β=1.0"/>
+  <img src="imagenes/Ataque_adversario_beta1.jpg" width="45%" alt="Gradient β=1.0"/>
 </p>
-<p align="center"><em>Izquierda: β = 20.0 &nbsp;|&nbsp; Derecha: β = 1.0</em></p>
+<p align="center"><em>Left: β = 20.0 &nbsp;|&nbsp; Right: β = 1.0</em></p>
 
+### 5.2 β sweep: fixed adversarial image, adversarial and original explanations
 
-### 5.2 Barrido de β: imagen adversaria fija, explicaciones adversaria y original
-
-Aquí se muestran dos rejillas:  
-- En la primera, la **imagen adversaria** se mantiene fija y se visualizan las explicaciones adversaria y original para distintos β cuando el texto aparece con alta intensidad (ataque fuerte).  
-- En la segunda, el ataque está más limitado y se observa en qué rangos de β el texto “Universidad De Sevilla” sigue siendo visible en la explicación.
-
-
+Two grids are shown here:  
+- In the first one, the **adversarial image** is kept fixed and the adversarial and original explanations are visualized for different β values when the text appears with high intensity (strong attack).  
+- In the second one, the attack is more constrained and it shows in which β ranges the text “Universidad De Sevilla” remains visible in the explanation.
 
 <p align="center">
   <img src="imagenes/Suavizado_explicacion_b=20.png"
-       width="40%" alt="Barrido β, ataque b=20"/>
+       width="40%" alt="β sweep, attack b=20"/>
   &nbsp;&nbsp;
   <img src="imagenes/Suavizado_explicacion_b=1.jpg"
-       width="40%" alt="Barrido β, ataque b=1"/>
+       width="40%" alt="β sweep, attack b=1"/>
 </p>
-<p align="center"><em>Izquierda: Ataque para β = 20.0 &nbsp;|&nbsp; Derecha: Ataque para β = 1.0</em></p>
+<p align="center"><em>Left: attack for β = 20.0 &nbsp;|&nbsp; Right: attack for β = 1.0</em></p>
 
+Each figure is interpreted row by row:
+- Column 1: adversarial image \( x_{\text{adv}} \) (the same in all rows).  
+- Column 2: adversarial explanation for a given β value.  
+- Column 3: original explanation for the same β value.
 
-Cada figura se interpreta fila a fila:
-- Columna 1: imagen adversaria \( x_{\text{adv}} \) (igual en todas las filas).  
-- Columna 2: explicación adversaria para un valor de β concreto.  
-- Columna 3: explicación original para ese mismo valor de β.
+### 5.3 SSIM comparisons between original and adversarial images
 
-### 5.3 Comparaciones SSIM entre imagen original y adversaria
-
-Las siguientes figuras muestran comparaciones cuantitativas mediante SSIM:
-
-
+The following figures show quantitative comparisons using SSIM:
 
 <p align="center">
   <img src="imagenes/ssim_comparison_b=20.png"
        width="90%" alt="SSIM β=20.0"/>
-  
 </p>
 <p align="center">
-<em>SSIM = 0.976 — Ataque con β = 20.0</em>
+<em>SSIM = 0.976 — Attack with β = 20.0</em>
 </p>
 
 <p align="center">
   <img src="imagenes/ssim_comparison_b=1.png"
        width="90%" alt="SSIM β=1.0"/>
-  
 </p>
 <p align="center">
-<em>SSIM = 0.952 — Ataque con β = 1.0</em>
+<em>SSIM = 0.952 — Attack with β = 1.0</em>
 </p>
 
+Each figure contains:
+- Original image.  
+- Adversarial image.  
+- Amplified RGB difference \(|X - X_{adv}| \times 5\).  
+- Per-pixel SSIM map (average of the 3 channels), together with the global SSIM value.
 
-
-
-Cada figura contiene:
-- Imagen original.  
-- Imagen adversaria.  
-- Diferencia RGB amplificada |X − X_adv| × 5.  
-- Mapa SSIM por píxel (promedio de los 3 canales), junto con el valor global de SSIM.
-
-Para el conjunto total de imágenes, consulta [La carpeta imagenes](./imagenes).
+For the full set of images, see [the images folder](./imagenes).
 
 ---
 
-## 6. Créditos y licencia
+## 6. Credits and license
 
-El código de este repositorio se basa en el trabajo de Pan Kessel,
-**"Explanations can be manipulated and geometry is to blame"**, disponible en:
+This repository is based on Pan Kessel's work,
+**"Explanations can be manipulated and geometry is to blame"**, available at:
 
 > [https://github.com/pankessel/adv_explanation_ref](https://github.com/pankessel/adv_explanation_ref)
 
-Los archivos `run_attack-beta.py`, `run_attack-multiples-betas.py` y `utils_modificado.py`
-incluyen cabeceras con la licencia original Apache 2.0 y las modificaciones específicas
-realizadas para este TFM.
+The files `run_attack-beta.py`, `run_attack-multiples-betas.py`, and `utils_modificado.py`
+include headers with the original Apache 2.0 license and the specific modifications made for this thesis.
 
-Las imágenes de muestra utilizadas en los experimentos (conejo) han sido obtenidas de
-[Freepik](https://www.freepik.com) bajo su licencia gratuita. Se requiere atribución:
-> Imagen de [Freepik](https://www.freepik.com)
-
----
+The sample images used in the experiments (the rabbit) were obtained from [Freepik](https://www.freepik.com) under its free license. Attribution is required:
+> Image from [Freepik](https://www.freepik.com)

@@ -1,31 +1,27 @@
-#### 🔧 Metodos_IA.py
+## 🔧 Artificial Intelligence and Data Science
 
-Implementación desde cero de los siguientes algoritmos y técnicas:
+[🇪🇸 Read the Spanish version](README_ES.md)
 
-- **Regresión Logística** con mini-batch y decaimiento de tasa de aprendizaje
-- **Clasificación multiclase** mediante estrategia One-vs-Rest (OvR)
-- **Codificación one-hot** de variables categóricas
-- **Búsqueda exhaustiva de hiperparámetros** sobre datasets estándar: votos de
-  congresistas (US), diagnóstico de cáncer e IMDB
+#### 🔧 `Metodos_IA.py`
 
-#### 📊 Proyecto_Annealing.ipynb
+Implementation from scratch of the following algorithms and techniques:
 
-Pipeline completo aplicado al conjunto *Steel Plates Faults* (UCI):
+- **Logistic Regression** with mini-batch training and learning-rate decay
+- **Multiclass classification** using the One-vs-Rest (OvR) strategy
+- **One-hot encoding** of categorical variables
+- **Exhaustive hyperparameter search** on standard datasets: US congressional votes, cancer diagnosis, and IMDB
 
-1. **Desambiguación de valores compactados en `NaN`**: distinción entre verdaderos
-   ausentes y categorías *No aplicable* mediante árboles de decisión y codificación one-hot
-2. **Imputación iterativa** de nulos residuales con `IterativeImputer` + `BayesianRidge`
-3. **Preprocesado final**: normalización con `StandardScaler` y partición estratificada
-   en entrenamiento, validación y test
-4. **Entrenamiento de modelos base**: Random Forest, Regresión Logística y Perceptrón
-   Multicapa con sistema de votación ponderada (*soft voting*)
-5. **Relevancia de atributos** mediante importancia por permutación — los atributos
-   `ohesurface-qualitynan` y `hardness` resultan los más influyentes
-6. **Reducción de dimensionalidad** con PCA a distintos umbrales de varianza explicada
-   (50 %–95 %)
-7. **Stacking y búsqueda de hiperparámetros** para obtener el modelo predictivo de
-   mayor rendimiento
+#### 📊 `Proyecto_Annealing.ipynb`
 
+Complete pipeline applied to the *Steel Plates Faults* dataset (UCI):
+
+1. **Disambiguation of compacted `NaN` values**: distinction between true missing values and *Not applicable* categories using decision trees and one-hot encoding
+2. **Iterative imputation** of residual missing values with `IterativeImputer` + `BayesianRidge`
+3. **Final preprocessing**: normalization with `StandardScaler` and stratified train/validation/test split
+4. **Training of baseline models**: Random Forest, Logistic Regression, and Multilayer Perceptron with a weighted voting system (*soft voting*)
+5. **Feature relevance** through permutation importance — the attributes `ohesurface-qualitynan` and `hardness` are the most influential
+6. **Dimensionality reduction** with PCA at different explained-variance thresholds (50%–95%)
+7. **Stacking and hyperparameter search** to obtain the best-performing predictive model
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)

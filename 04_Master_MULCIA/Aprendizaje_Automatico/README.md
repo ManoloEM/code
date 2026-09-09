@@ -1,11 +1,13 @@
-## 🤖 Aprendizaje Automático
+## 🤖 Machine Learning
 
-Cuestionarios y ejercicios prácticos de la asignatura de Aprendizaje Automático del Máster MULCIA (Universidad de Sevilla). Cada notebook aborda un paradigma distinto del machine learning clásico, aplicado sobre datasets reales del repositorio UCI.
+Quizzes and practical exercises for the Machine Learning course of the MULCIA Master's programme (University of Seville). Each notebook covers a different paradigm of classical machine learning, applied to real datasets from the UCI repository.
 
-| Notebook | Tema | Descripción |
+[🇪🇸 Read the Spanish version](README_ES.md)
+
+| Notebook | Topic | Description |
 |---|---|---|
-| [C2_Enciso_Martinez.ipynb](./C2_Enciso_Martinez.ipynb) | **Árboles de decisión** | Análisis y clasificación del rendimiento académico de estudiantes universitarios (UCI). Incluye preprocesado de datos, construcción de árboles de decisión, poda y evaluación de modelos. |
-| [C4_Enciso_Martinez.ipynb](./C4_Enciso_Martinez.ipynb) | **Redes neuronales (MLP)** | Clasificación de recurrencia de cáncer de tiroides diferenciado (UCI) mediante perceptrones multicapa. Se estudia el efecto de distintas arquitecturas y parámetros sobre el rendimiento del modelo. |
-| [C5_Enciso_Martinez.ipynb](./C5_Enciso_Martinez.ipynb) | **Aprendizaje no supervisado** | Segmentación mediante clustering (K-Medias) aplicada a imágenes médicas de TAC para la detección de zonas de interés (cálculos renales). Se analiza la capacidad del clustering por color para identificar regiones patológicas. |
+| [C2_Enciso_Martinez.ipynb](./C2_Enciso_Martinez.ipynb) | **Decision trees** | Analysis and classification of university students' academic performance (UCI). Includes data preprocessing, decision tree construction, pruning, and model evaluation. |
+| [C4_Enciso_Martinez.ipynb](./C4_Enciso_Martinez.ipynb) | **Neural networks (MLP)** | Classification of differentiated thyroid cancer recurrence (UCI) using multilayer perceptrons. The effect of different architectures and parameters on model performance is studied. |
+| [C5_Enciso_Martinez.ipynb](./C5_Enciso_Martinez.ipynb) | **Unsupervised learning** | Segmentation through clustering (K-Means) applied to medical CT images to detect areas of interest (kidney stones). The ability of color clustering to identify pathological regions is analyzed. |
 
 **Stack:** `scikit-learn`, `TensorFlow/Keras`, `NumPy`, `pandas`, `matplotlib`, `Google Colab`
