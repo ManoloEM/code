@@ -1,77 +1,75 @@
-# 🌍 02 — Erasmus · Universidade de Coimbra (2023–2024)
+[🇪🇸 Read the Spanish version](README_ES.md)
 
-Repositorio de proyectos y prácticas desarrollados durante el periodo de movilidad Erasmus+
-en la **Facultade de Ciências e Tecnologia da Universidade de Coimbra**.
-Los trabajos se realizaron en portugués o ingles, en ocasiones en colaboración con compañeros.
+# 🌍 02 — Erasmus · University of Coimbra (2023–2024)
+
+Repository of projects and practices developed during the Erasmus+ mobility period
+at the **Faculty of Sciences and Technology of the University of Coimbra**.
+The work was carried out in Portuguese or English, sometimes in collaboration with colleagues.
 
 ---
 
-## 📁 Contenido
+## 📁 Content
 
 ### `As-proyecto.Rmd`
-**Asignatura:** Amostragem e Sondagem (Muestreo y Sondeo)
-**Lenguaje:** R 
-**Colaboración:** Sara Aguado
+**Course:** Sampling and Surveying
+**Language:** R
+**Collaboration:** Sara Aguado
 
-Proyecto de análisis estadístico que compara dos estimadores de dominio sobre un conjunto de
-datos real de rendimiento académico de estudiantes (Kaggle). Se estudia el estimador de la
-media en un subdominio (mujeres) bajo dos escenarios: con y sin conocimiento del tamaño
-poblacional del dominio N₀.
+Statistical analysis project that compares two domain estimators on a real dataset of student academic performance (Kaggle). The mean estimator in a subdomain (women) is studied under two scenarios: with and without knowledge of the population size of the domain N₀.
 
-El trabajo incluye:
-- Cálculo del valor real del parámetro objetivo
-- Extracción de una muestra aleatoria simple sin reemplazamiento (SSR)
-- Estimación puntual y de varianza para ambos estimadores
-- Construcción de intervalos de confianza al 95%
-- Simulación de 100 repeticiones para calcular probabilidades de cobertura
-- Comparación gráfica de estimadores y sus varianzas mediante boxplots
+The work includes:
+- Calculation of the true value of the target parameter
+- Extraction of a simple random sample without replacement (SSR)
+- Point and variance estimation for both estimators
+- Construction of 95% confidence intervals
+- Simulation of 100 repetitions to calculate coverage probabilities
+- Graphical comparison of estimators and their variances using boxplots
 
-**Conclusión principal:** Ambos estimadores convergen en sesgo, pero difieren en varianza.
-El estimador con N₀ conocido presenta mayor varianza estimada, resultado que se analiza
-en detalle en el documento PDF adjunto.
+**Main conclusion:** Both estimators converge in bias, but differ in variance.
+The estimator with known N₀ presents a higher estimated variance, a result that is analyzed
+in detail in the attached PDF document.
 
 ---
 
 ### `ProyectoONMatLab.m`
-**Asignatura:** Otimização Numérica (Optimización Numérica)
-**Lenguaje:** MATLAB
+**Course:** Numerical Optimization
+**Language:** MATLAB
 
-Proyecto de aproximación de funciones mediante redes neuronales de una capa oculta,
-modeladas como combinaciones lineales de funciones de activación ReLU (φ(x) = max(x, 0)).
-Dado un conjunto de observaciones O y un conjunto de validación T, se minimiza el error
-cuadrático entre la función objetivo f y la aproximación g.
+Function approximation project using single-hidden-layer neural networks,
+modeled as linear combinations of ReLU activation functions (φ(x) = max(x, 0)).
+Given a set of observations O and a validation set T, the quadratic error between the target function f and the approximation g is minimized.
 
-El trabajo cubre los siguientes experimentos:
+The work covers the following experiments:
 
-| Ejercicio | Descripción |
+| Exercise | Description |
 |-----------|-------------|
-| Ej. 2–3   | Aproximación de f(x)=(x−1)² con m=2 y m=10 neuronas; método quasi-Newton (`fminunc`) |
-| Ej. 4.A   | Comparación con el método Nelder-Mead (`fminsearch`) para m=2 |
-| Ej. 4.B   | Aumento de datos de observación (n=20) y neuronas (m=7); análisis de mejora |
-| Ej. 4.C   | Datos con perturbación aleatoria (ruido uniforme); robustez del modelo |
-| Ej. 4.D   | Generalización a distintas funciones: x³, x(x−1)(x−2), ((x−1)²−1)², eˣ, sin(x) |
+| Ex. 2–3   | Approximation of f(x)=(x−1)² with m=2 and m=10 neurons; quasi-Newton method (`fminunc`) |
+| Ex. 4.A   | Comparison with the Nelder-Mead method (`fminsearch`) for m=2 |
+| Ex. 4.B   | Increase in observation data (n=20) and neurons (m=7); improvement analysis |
+| Ex. 4.C   | Data with random perturbation (uniform noise); model robustness |
+| Ex. 4.D   | Generalization to different functions: x³, x(x−1)(x−2), ((x−1)²−1)², eˣ, sin(x) |
 
-Cada experimento registra los parámetros óptimos (a, b), el valor de la función objetivo,
-el número de iteraciones y evaluaciones, y genera visualizaciones superpuestas de f(x) y g(x).
+Each experiment records the optimal parameters (a, b), the value of the objective function,
+the number of iterations and evaluations, and generates superimposed visualizations of f(x) and g(x).
 
 ---
 
 ### 📂 `modelizacion/`
-Carpeta correspondiente a la asignatura de **Modelización Matemática**.
-Contiene prácticas y proyectos de construcción y análisis de modelos matemáticos aplicados.
+Folder corresponding to the **Mathematical Modeling** course.
+Contains practical and applied mathematical model construction and analysis projects.
 
 ---
 
 ### 📂 `BaseDeDatos/`
-**Asignatura:** Base de Datos
-**Lenguaje:** SQL
-**Colaboración:** Juan Rodriguez
+**Course:** Databases
+**Language:** SQL
+**Collaboration:** Juan Rodriguez
 
-Proyecto de realizar una pagina web enlazada con una base de datos para la recolección de reseñas de cine.
+Project to create a website linked to a database for collecting movie reviews.
 
 ---
 
-## Stack tecnológico
+## Technological stack
 
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=sqlite&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?style=flat&logo=r&logoColor=white)
@@ -79,7 +77,7 @@ Proyecto de realizar una pagina web enlazada con una base de datos para la recol
 
 ---
 
-## 🏫 Institución
+## 🏫 Institution
 
-**Universidade de Coimbra** — Facultade de Ciências e Tecnologia
-Programa **Erasmus+** · Curso académico 2023–2024
+**University of Coimbra** — Faculty of Sciences and Technology
+**Erasmus+** Program · Academic year 2023–2024

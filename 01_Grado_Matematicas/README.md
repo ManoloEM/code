@@ -1,38 +1,39 @@
-# 🧮 01 — Grado en Matemáticas — Universidad de Málaga
+[🇪🇸 Read the Spanish version](README_ES.md)
 
-> Prácticas y proyectos del Grado en Matemáticas
+# 🧮 01 — Bachelor\'s Degree in Mathematics — University of Malaga
 
----
-
-## Descripción general
-
-Esta carpeta contiene algunos de los trabajos prácticos, ejercicios y proyectos desarrollados durante el Grado en Matemáticas. 
+> Practices and projects of the Degree in Mathematics
 
 ---
 
-## Contenido
+## General description
 
-### 📁 Análisis Numérico
-Resolución numérica de ecuaciones, interpolación, integración y sistemas lineales. Implementados con `NumPy` y `SciPy`.  
-Temas: descomposición LU, Newton-Raphson, Runge-Kutta, diferencias finitas.
-
-### 📁 Informatica
-Introducción e implementaciones de algoritmos clásicos
-
-### 📁 Métodos Numéricos
-Librería en Python de algoritmos para álgebra lineal numérica y resolución de sistemas lineales, implementados desde cero con NumPy. Métodos: Gauss con pivote, Gauss-Jordan, factorizaciones LU y Cholesky, Jacobi, Gauss-Seidel, relajación, método de la potencia e iteración inversa. Incluye prácticas y exámenes de convocatorias.
-
-### 📄 Optimización — Práctica 2
-Resolución de problemas de programación lineal y entera en Mathematica. Incluye análisis de sensibilidad y Branch & Bound.
-Temas: soluciones básicas óptimas, variación de costes, ramificación en anchura y profundidad.
-
-### 📄 TFG — Trabajo de fin de grado sobre aprendizaje por refuerzo
-Este cuaderno Jupyter constituye el código principal del Trabajo de Fin de Grado y recoge la implementación y experimentación sobre el problema del Multi-Armed Bandit (MAB), un marco clásico del aprendizaje por refuerzo para el estudio del dilema exploración-explotación. El notebook implementa y compara distintas estrategias de selección de acción, incluyendo variantes de ε-greedy, UCB y métodos basados en el enfoque bayesiano, evaluando su rendimiento acumulado a través de múltiples simulaciones. Incluye tanto las conclusiones teóricas de los resultados experimentales como la experimentación de distintos aprendizajes a lo largo del tiempo.
-
+This folder contains some of the practical works, exercises and projects developed during the Degree in Mathematics.
 
 ---
 
-## Stack tecnológico
+## Content
+
+### 📁 Numerical Analysis
+Numerical resolution of equations, interpolation, integration and linear systems. Implemented with `NumPy` and `SciPy`.
+Topics: LU decomposition, Newton-Raphson, Runge-Kutta, finite differences.
+
+### 📁 Computer Science
+Introduction and implementations of classical algorithms
+
+### 📁 Numerical Methods
+Python library of algorithms for numerical linear algebra and resolution of linear systems, implemented from scratch with NumPy. Methods: Gauss with pivot, Gauss-Jordan, LU and Cholesky factorizations, Jacobi, Gauss-Seidel, relaxation, power method and inverse iteration. Includes practices and exam calls.
+
+### 📄 Optimization — Practice 2
+Resolution of linear and integer programming problems in Mathematica. Includes sensitivity analysis and Branch & Bound.
+Topics: optimal basic solutions, cost variation, breadth and depth branching.
+
+### 📄 TFG — Final Degree Project on reinforcement learning
+This Jupyter notebook constitutes the main code of the Final Degree Project and includes the implementation and experimentation on the Multi-Armed Bandit (MAB) problem, a classic reinforcement learning framework for the study of the exploration-exploitation dilemma. The notebook implements and compares different action selection strategies, including ε-greedy variants, UCB and methods based on the Bayesian approach, evaluating their accumulated performance through multiple simulations. It includes both the theoretical conclusions of the experimental results and the experimentation of different learnings over time.
+
+---
+
+## Technological stack
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
